@@ -1,0 +1,139 @@
+
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Összes Kurzus</title>
+    <link rel="icon" type="image/png" href="img/favicon.ico">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel='stylesheet' href='css/style.css'>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script/generals.js"></script>
+    <script src="script/allCourses.js" defer></script>
+    <script src="script/notifications.js" defer></script>
+
+</head>
+<body style="background-color: #4c956c;">
+    <header>
+       <!-- NAVBAR START ----------------------------------------------------------------------------------------------------------------------->
+       <nav class='navbar py-2' style='background-color: #006A42;'>
+        <div class='container'>
+            <div class='navbar-brand'>
+                <a class='navbar-item' href='https://csik.sapientia.ro' target='_blank'>
+                    <img src='img/sapi_logo.jpg' alt='Logo'>
+                </a>
+            </div>
+            <div class='navbar-content'>
+                <p class='title is-4'>
+                    Sapientia
+                    <span><br> Erdélyi Magyar
+                    <br> Tudományegyetem</span>
+                </p>
+            </div>
+
+            <div class='navbar-menu' id='nav-links'>
+                <div class='navbar-end '>
+                    <a class='navbar-item is-active' href='all_courses.html'><i class='fa fa-home'></i></a>
+                    <div class='navbar-item has-dropdown is-hoverable'>
+                        <a class='navbar-item' href="#"><i class='fa fa-envelope'></i></a>
+                        <div class='navbar-dropdown' id="notificationContainer">
+                            <!-- Notification items will be dynamically inserted here -->
+                        </div>
+                    </div>
+
+                    <div class='navbar-item has-dropdown is-hoverable'>
+                        <i class='fa fa-cog' id="icon"></i> 
+                        <div class='navbar-dropdown'>
+                            <a class='navbar-item' href="profile.html">Profil</a>
+                            <a class='navbar-item' href='calendar.html'>Naptár</a>
+                            <a class='navbar-item' id="logout">Kijelentkezés</a>
+                        </div>
+                    </div>
+                    <div class="user-info">
+                        <img class="profile-image" id="profile-image" src="img/usericon.png" alt="Profile Image">
+                        <div id="loggedin-username">
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- NAVBAR END -------------------------------------------------------------------------------------------------------------------------->
+</header>
+    <main class="bg_1">
+        <div class='container'>
+            <div class='section'>
+                <div class='columns'>
+                    <div class='column has-text-centered' id="top">
+                        <h1 class='title' style='color: ghostwhite;'>Összes Kurzus</h1><br>
+                        <div class='column has-text-centered' id="buttons">
+
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FIST CARD START ------------------------------------------------------------------------------------------------------------->
+                <div class='row columns is-multiline' id='app'>
+                </div>
+            </div>
+        </div>
+        <div id="createCourseModal" class="modal">
+            <div class="modal-background">
+                <div id="notification" class="notification is-hidden has-text-centered" style="background-color: red; color: aliceblue ;">
+                    <span id="notification-message"></span>
+                </div>
+            </div>
+            <div class="modal-content">
+                <div class="box">
+                    <label class="label">Kuzus Címe</label>
+                    <div class="control">
+                        <input class="input" type="text" id="courseTitle" placeholder="Adja meg a kurzus nevét" minlength="10" required>
+                        <span id="courseTitleCount" class="character-count">0/10</span>
+                    </div>
+                    <label class="label">Kurzus Leírása</label>
+                    <div class="control">
+                        <textarea class="textarea" id="courseDescription" placeholder="Adja meg a kurzus leírását" minlength="50" required></textarea>
+                        <span id="courseDescCount" class="character-count">0/50</span>
+                    </div>
+                    <label class="label">Kurzus határideje</label>
+                    <div class="control">
+                        <input class="input" type="date" id="courseDeadline">
+                    </div>
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <a class="button is-link mt-4" id="create-course-btn">Kuruzus Létrehozása</a>
+                        </div>
+                        <div class="control">
+                            <a class="button mt-4" id="cancel-create-course-btn">Mégsem</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- <div class="bg_img">
+            <img src="img/bg.png" alt="icon">
+        </div> -->
+<!-- FOOTER START ------------------------------------------------------------------------------------------------------------------------------->
+        <footer class='footer' style='background-color: #006A42'>
+            <img src="img/footer_left.png" alt="" class="left">
+            <img src="img/footer_left.png" alt="" class="left" id="sec">
+            <img src="img/footer_right.png" alt="" class="right">
+            <img src="img/footer_right.png" alt="" class="right" id="sec_ag">
+            <div class='container'>
+              <div class='content has-text-centered'>
+                <div class='soc'>
+                  <a href='#'><i class='fa fa-github-alt fa-lg'></i></a>
+                  <a href='#'><i class='fa fa-youtube fa-lg'></i></a>
+                  <a href='#'><i class='fa fa-facebook fa-lg'></i></a>
+                  <a href='#'><i class='fa fa-twitter fa-lg'></i></a>
+                </div>
+            </div>
+        </footer>
+<!-- FOOTER END------------------------------------------------------------------------------------------------------------------------------>
+    </main>
+</body>
+</html>

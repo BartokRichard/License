@@ -1,0 +1,366 @@
+main.bg_1{
+    background-image: url(../img/bg.png);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+}
+.row {
+    position: relative;
+    z-index: 10;
+    top: 150%;
+}   
+
+.footer img{
+    width: 250px;
+}
+
+.footer .left{
+    position: relative;
+    left:200px;
+}
+
+footer .right{
+    position: relative;
+    left:750px
+}
+
+footer{
+    height: 230px;
+}
+
+footer .container{
+    position: relative;
+    bottom:80px
+}
+
+footer #sec{
+    width: 150px;
+    position: relative;
+    left: -230px;
+    top: 30px; 
+}
+
+footer #sec_ag{
+    width: 150px;
+    position: relative;
+    left: 290px;
+    top: 30px; 
+}
+.card.is-shady {
+    margin: 10px;
+}
+
+.navbar-end{
+    gap: 15px;
+}
+
+.navbar i {
+    color: #fff;
+    border: 1px solid;
+    border-radius: 100%;
+    padding: 25%;
+    
+}
+
+.navbar .navbar-content {
+    padding-left: 10px;
+}
+
+.navbar .navbar-content p{
+    color:#fff;
+}
+
+.navbar .navbar-content p span{
+    font-size: 15px;
+}
+
+.navbar i:hover{
+    background-color: #07D48F;
+}
+
+a.navbar-item:hover{
+    background-color: #006A42;
+} 
+.navbar-item.is-active:hover{
+    background-color: #006A42;
+}
+
+.navbar-end .fa-envelope{
+    transform: scale(1.5);
+}
+.navbar img{
+    transform: scale(2);
+}
+.navbar-end .fa-home{
+    transform: scale(2);
+    padding: 15%;
+}
+
+.navbar-end .fa-bell{
+    transform: scale(1.4);
+}
+
+footer i{
+    color: #fff;
+    margin: 0 20px 20px 0;
+}
+
+footer i:hover{
+    color: grey;
+}
+
+footer strong{
+    color:#485fc7;
+    cursor: pointer;
+}
+#icon{
+    height: 27px;
+    transform: scale(1.4);
+    margin-left: 5px;
+    position: relative;
+    top: 17px;
+}
+.user-info{
+    height: 50px;
+    width: 90px;
+}
+#profile-image{ 
+    position: relative;
+    top: 34%;
+    left: 48%;
+    border: 1px solid #fff;
+    border-radius: 100px;
+    width: 24px;
+    height: 24px;
+    padding: 0 2px 0 2px;
+    
+}
+#loggedin-username{
+    height: 50px;
+    font-weight: 600;
+    position: relative;
+    bottom: 25%;
+    left: 90%;
+    color: #fff;
+    font-size: 12px;
+    z-index: 20;
+}   
+
+.character-count {
+    position: absolute;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    color: #dbdbdb;
+}
+
+.selected-student{
+    background-color: rgb(174, 197, 116);
+}
+.student-card{
+    cursor: pointer;
+}
+
+.card-column{
+    padding: 5px 12px 
+}
+
+#grading_filed{
+    margin:7px 24px 12px -25px;
+}
+
+#chat_box{
+    height: 700px;
+    padding: 0;
+    width: 420px;
+    position: relative;
+    z-index: 20;
+    border-radius: 25px;
+   
+}
+
+#grade_box{
+    width: 250px; 
+    height: 150px;
+    margin: -19px -55px 0 90px; 
+    padding: 20px;  
+}
+
+#sname_box{
+    background-color: #006A42;
+    color: #fff;
+    border-radius: 20px;
+}
+
+
+.student-message-box{
+    background-color: #4C956C;
+    color: #fff;
+    border-radius: 20px;
+   margin-right: 15px;
+   margin-top: 15px;
+    border: none;
+    display: inline-block;
+    max-width: 80%;
+}
+.selected-task{
+    background-color: rgb(174, 197, 116);
+    padding: 15px 10px 0 10px;
+}
+.task_cont{
+    cursor: pointer;
+    margin: 0;
+    width: calc(100% + 40px);
+    margin-left: -20px;
+    margin-top: -20px;
+    padding: 10px 0;
+    box-sizing: border-box;
+}
+
+.task_parent{
+    color: rgb(0, 0, 0);
+    width: 70%;
+
+}
+
+.message-container {
+    clear: both;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.teacher-name-box {
+    position: relative;
+    top: 3%;
+    border-radius: 20px;
+    margin: 15px;
+    background-color: #006A42;
+    color: #fff;
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+.message-input{
+    position: relative;
+
+    margin: 15px;
+    gap: 10px; 
+    display: block;
+    
+}
+
+.send-message-button{
+    background-color:#006A42;
+    border: none;
+    height: 50px
+}
+
+#msg-inp {
+    border-radius: 20px;
+    background-color: #006A42;
+    border: none;
+    color: #fff;
+    height: 50px;
+}
+
+.student-message-box{
+    background-color: #4C956C;
+    color: #fff;
+    border-radius: 20px;
+   margin-right: 15px;
+   margin-top: 15px;
+    border: none;
+    display: inline-block;
+    max-width: 80%;
+}
+
+.student-message-box p{
+    padding: 15px
+}
+
+.teacher-message-box{
+    background-color: #204b38;
+    color: #ffffff;
+    border-radius: 20px;
+    margin-left: 15px;
+    margin-top: 15px;
+    border: none;
+    display: block;
+    max-width: 80%;
+}
+
+.teacher-message-box p{
+    padding: 15px
+}
+#messages{
+    height: calc(100% - 187px);
+    overflow-y: auto ;
+    overflow-anchor: auto;
+}
+#chat_box.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    background-color: #f3f4f6;
+}
+.file-display {
+    text-align: center; 
+    margin-bottom: 15px; 
+}
+
+#buttons {
+    justify-content: center;
+    display: flex;
+    gap: 16px;
+}
+
+.file-icon {
+    font-size: 36px; 
+    display: block; 
+}
+
+.file-name {
+    border: none;
+    font-size: 16px; 
+    display: block; 
+}
+.task_cont.opened {
+    background-color: #AEC574; /* Zöld háttér az aktív feladatoknak */
+}
+
+.task_cont.closed {
+    background-color: transparent; /* Töröld a háttérszínt, amikor nincs kinyitva */
+}
+
+.fa-caret-right, .fa-caret-down {
+    transition: transform 0.3s ease;
+}
+
+.fa-caret-right.opened, .fa-caret-down.closed {
+    transform: rotate(180deg);
+}
+.module{
+    cursor: pointer;
+}
+
+.student-card-name {
+    margin: 0 !important;
+}
+.navbar-item-wide {
+    width: 200px; /* Változtasd meg a szélességet igény szerint */
+}
+.has-new-notifications{
+    display: flex;
+   
+}
+.fa-envelope .fa-exclamation{
+    border:none;
+    position: absolute;
+    top: -14px;
+    right: -9px;
+
+}
+.delete-notification{
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    size: 20px;
+}

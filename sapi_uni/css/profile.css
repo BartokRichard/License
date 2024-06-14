@@ -1,0 +1,267 @@
+/* BASE CSS START--------------------------------------------- */
+.navbar-end{
+    gap: 15px;
+}
+
+.navbar i {
+    color: #fff;
+    border: 1px solid;
+    border-radius: 100%;
+    padding: 25%;
+    
+} 
+
+.navbar img{
+    transform: scale(2);
+}
+
+.navbar .navbar-content {
+    padding-left: 10px;
+}
+
+.navbar .navbar-content p{
+    color:#fff;
+}
+
+.navbar .navbar-content p span{
+    font-size: 15px;
+}
+
+.navbar i:hover{
+    background-color: #07D48F;
+}
+
+a.navbar-item:hover{
+    background-color: #006A42;
+} 
+.navbar-item.is-active:hover{
+    background-color: #006A42;
+}
+
+.navbar-end .fa-envelope{
+    transform: scale(1.5);
+}
+
+.navbar-end .fa-home{
+    transform: scale(2);
+    padding: 15%;
+}
+
+.navbar-end .fa-bell{
+    transform: scale(1.4);
+}
+.navbar-item-wide {
+    width: 200px; /* Változtasd meg a szélességet igény szerint */
+}
+.has-new-notifications{
+    display: flex;
+   
+}
+.fa-envelope .fa-exclamation{
+    border: none;
+    position: absolute;
+    top: -14px;
+    right: -9px;
+}
+.delete-notification{
+    cursor: pointer;
+    position: relative;
+    top: -70px;
+    left: 35px;
+    size: 17px;
+    font-weight: 700;
+}
+
+
+footer i{
+    color: #fff;
+    margin: 0 20px 20px 0;
+}
+
+footer i:hover{
+    color: grey;
+}
+
+footer strong{
+    color:#485fc7;
+    cursor: pointer;
+}
+.footer img{
+    width: 250px;
+}
+
+.footer .left{
+    position: relative;
+    left:200px;
+}
+
+footer .right{
+    position: relative;
+    left:750px
+}
+
+footer{
+    height: 230px;
+}
+
+footer .container{
+    position: relative;
+    bottom:80px
+}
+
+footer #sec{
+    width: 150px;
+    position: relative;
+    left: -230px;
+    top: 30px; 
+}
+
+footer #sec_ag{
+    width: 150px;
+    position: relative;
+    left: 290px;
+    top: 30px; 
+}
+
+.bg_img img{
+    margin-top: -400px;
+}
+
+.user-info{
+    height: 50px;
+    width: 90px;
+}
+#profile-image{ 
+    position: relative;
+    top: 34%;
+    left: 48%;
+    border: 1px solid #fff;
+    border-radius: 100px;
+    width: 24px;
+    height: 24px;
+    padding: 0 2px 0 2px;
+    
+}
+#loggedin-username{
+    height: 50px;
+    position: relative;
+    bottom: 25%;
+    font-weight: 600;
+    left: 90%;
+    color: #fff;
+    font-size: 12px;
+    z-index: 20;
+}   
+#icon{
+    height: 27px;
+    transform: scale(1.4);
+    margin-left: 5px;
+    position: relative;
+    top: 17px;
+  }
+  .user-info{
+    height: 50px;
+    width: 90px;
+  }
+  #profile-image{ 
+    position: relative;
+    top: 34%;
+    left: 48%;
+    border: 1px solid #fff;
+    border-radius: 100px;
+    width: 24px;
+    padding: 0 2px 0 2px;
+    
+  }
+  #loggedin-username{
+    height: 50px;
+    font-weight: 600;
+    position: relative;
+    bottom: 25%;
+    left: 90%;
+    color: #fff;
+    font-size: 12px;
+    z-index: 20;
+  }
+  body {
+    background: whitesmoke;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+
+/* BASE CSS END---------------------------------------------- */
+
+.container .section .level-left .box{
+    position: relative;
+    top: 77px;
+    z-index: 10;
+    height: 370px;
+    width: 470px;
+}
+
+
+.media figure{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 100%;
+   
+}
+
+.media figure img{
+    position: relative;
+    background-color: #006A42;
+    border-radius: 50%;
+    height: 220px; 
+    width: 220px;
+    margin: 0 auto;
+}   
+
+.box .level-item .text{
+    position: relative;
+    bottom: 100px;
+}
+
+.box .level-item .text .title{
+    font-size: 20px;
+}
+
+.table{
+    position: relative;
+    bottom: -60px;
+}
+
+.table tbody tr td{
+    width: 700px;
+    height: 88px;
+}
+
+.table tbody tr strong{
+    position: relative;
+    top:5px
+}
+
+.table tbody tr span{
+   position: relative;
+   top:15px
+}
+
+.container .level-item .buttons{
+    position: relative;
+    left: 200px;
+    top: 20px
+    
+}
+.container .level-item .buttons .button {
+width: 200px;
+background-color:#485FC7
+}
+
+
+
+
+
+
+
+

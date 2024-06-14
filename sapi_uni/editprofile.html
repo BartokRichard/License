@@ -1,0 +1,271 @@
+
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Profil Szerkesztés</title>
+    <link rel="icon" type="image/png" href="img/favicon.ico">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel='stylesheet' href='css/editprof.css'>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script/generals.js"></script>
+    <script src="script/notifications.js" defer></script>
+
+</head>
+<body style='background-color: #4c956c;'>
+    <header>
+        <!-- NAVBAR START ----------------------------------------------------------------------------------------------------------------------->
+        <nav class ='navbar py-2' style='background-color: #006A42;'>
+            <div class='container'>
+                <div class ='navbar-brand'>
+                    <a class='navbar-item' href='https://csik.sapientia.ro' target='_blank' >   
+                        <img src='img/sapi_logo.jpg' alt='Logo'>
+                    </a>
+                </div>
+                <div class='navbar-content'>
+                    <p class='title is-4'>
+                        Sapientia
+                        <span><br> Erdélyi Magyar
+                        <br> Tudományegyetem</span>
+                    </p>
+                </div>
+
+                <div class='navbar-menu' id='nav-links'>
+                    <div class='navbar-end '>
+                        <a class='navbar-item is-active' href='all_courses.html'><i class='fa fa-home'></i></a>
+                        <div class='navbar-item has-dropdown is-hoverable notifications'>
+                            <a class='navbar-item ' href=""><i class='fa fa-envelope'></i></a>
+                            <div class='navbar-dropdown ' id="notificationContainer">
+                                <!-- Notification items will be dynamically inserted here -->
+                            </div>
+                        </div>
+                                                
+                        <div class='navbar-item has-dropdown is-hoverable'>
+                            <i class='fa fa-cog' id="icon"></i> 
+                            <div class='navbar-dropdown'>
+                                <a class='navbar-item' href="profile.html">Profil</a>
+                                <a class='navbar-item' href='calendar.html'>Naptár</a>
+                                <a class='navbar-item' id="logout">Kijelentkezés</a>
+                            </div>
+                        </div>
+                        <div class="user-info">
+                            <img class="profile-image" id="profile-image" src="img/usericon.png" alt="Profile Image">
+                            <div id="loggedin-username">
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- NAVBAR END -------------------------------------------------------------------------------------------------------------------------->
+        
+    </header>
+    <main>
+        <div class="container" id="edit">
+            <div class="section">
+                <div class="gap">
+                    <div class="box" id="first">
+                        <i class="fa fa-user-circle" style="font-size:24px"></i>
+                        <p>Profil Módosítása</p>
+                    </div>
+                </div>
+                <div class="gap">
+                    <div class="box" id="sec2">
+                        <div class="avatar-preview">
+                            <div id="imagePreviewContainer">
+                                <!-- Placeholder kép -->
+                                <img class="profile-image" id="placeholderImage">
+                            </div>
+                        </div>
+                        <label class="button is-success" id="uploadButton" style="width: 30%;">
+                            <div class="avatar-upload" id="avatarUploadSection">
+                                <div class="avatar-edit" >
+                                    <input type="file" id="imageUpload" accept=".png, .jpg, .jpeg" style="display: none;" />
+                                    <span class="file-icon">
+                                        <i class="fa fa-upload"></i>
+                                        <p>
+                                            Kép Feltöltése
+                                        </p>
+                                    </span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                                                                                             
+                </div>
+                <div class="gap">
+                    <div class="box" id="third">
+                        <div class="name">
+                            <p>Név</p>
+                            <input class="input" type="text" id="nameInput" placeholder="">
+                            <span class="error" id="nameError"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gap">
+                    <div class="box" id="fourth">
+                        <i class="fa fa-lock" aria-hidden="true" style="font-size:24px"></i>
+                        <p>Jelszó Módosítása</p>
+                    </div>
+                </div>
+                <div class="gap">
+                    <div class="box" id="fifth">
+                        <div class="currentpass">
+                            <p>Jelenlegi Jelszó</p>
+                            <input class="input" type="password" id="currentPassword" placeholder="********">
+                            <span class="error" id="currentPasswordError"></span>
+                        </div>
+                        <div class="newpass">
+                            <p class="pr-5">Új Jelszó</p>
+                            <input class="input" type="password" id="newPassword" placeholder="********">
+                            <span class="error" id="newPasswordError"></span>
+                        </div>
+                        <button class="button is-success" id="saveChangesButton">Változtatások Mentése</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="bg_img">
+        <img src="img/bg.png" alt="icon">
+    </div>
+    
+<!-- FOOTER START ------------------------------------------------------------------------------------------------------------------------------->
+<footer class='footer' style='background-color: #006A42'>
+    <img src="img/footer_left.png" alt="" class="left">
+    <img src="img/footer_left.png" alt="" class="left" id="sec">
+    <img src="img/footer_right.png" alt="" class="right">
+    <img src="img/footer_right.png" alt="" class="right" id="sec_ag">
+    <div class='container'>
+      <div class='content has-text-centered'>
+        <div class='soc'>
+          <a href='#'><i class='fa fa-github-alt fa-lg'></i></a>
+          <a href='#'><i class='fa fa-youtube fa-lg'></i></a>
+          <a href='#'><i class='fa fa-facebook fa-lg'></i></a>
+          <a href='#'><i class='fa fa-twitter fa-lg'></i></a>
+        </div>
+    </div>
+</footer>
+<!-- FOOTER END------------------------------------------------------------------------------------------------------------------------------>
+</main>
+<script>
+
+    $(document).ready(function () {
+        APICall({
+            type: "POST",
+            url: "login",
+            data: {},
+            success: function (response) {
+                setWelcomeMessage();
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    });
+  $(document).ready(function() {
+    userData = getSessionData('userData');
+    setProfileImage(userData.user_id);
+    $('#editProfileButton').click(function() {
+        $('#nameError').text('');
+        $('#emailError').text('');
+
+        var name = $('#nameInput').val();
+        var email = $('#emailInput').val();
+
+        if (name.trim() === '') {
+            $('#nameError').text('Name is required');
+        }
+
+        if (email.trim() === '') {
+            $('#emailError').text('Email is required');
+        } else if (!isValidEmail(email)) {
+            $('#emailError').text('Invalid email format');
+        }
+    });
+
+    $('#changePasswordButton').click(function() {
+        $('#currentPasswordError').text('');
+        $('#newPasswordError').text('');
+
+        var currentPassword = $('#currentPassword').val();
+        var newPassword = $('#newPassword').val();
+
+        if (currentPassword.trim() === '') {
+            $('#currentPasswordError').text('Current Password is required');
+        }
+
+        if (newPassword.trim() === '') {
+            $('#newPasswordError').text('New Password is required');
+        }
+    });
+
+    function isValidEmail(email) {
+        var emailPattern = /^\S+@\S+\.\S+$/;
+        return emailPattern.test(email);
+    }
+
+    $(document).ready(function () {
+       
+        APICall({
+            type: "POST",
+            url: "login",
+            data: {},
+            success: function (response) {
+                setWelcomeMessage();
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+        $('#saveChangesButton').click(function () {
+            var fileInput = $("#imageUpload")[0];
+
+            // Ellenőrizzük, hogy a fájl be lett-e választva
+            if (fileInput.files.length > 0) {
+                var formData = new FormData();
+                formData.append("imageUpload", fileInput.files[0]);
+
+                // Elküldjük a képfájlt a szervernek a megfelelő végponton keresztül
+                APICall({
+                    type: "POST",
+                    url:  "upload/profile/image",
+                    data: formData,
+                    processData: false,  // Fontos: ne feldolgozza a data-t (FormData-t)
+                    contentType: false,  // Fontos: ne állítson be content type-ot, hagyja a böngésző kezelni
+                    success: function (response) {
+                        console.log(response);
+                        // Itt lehet további műveleteket végezni a siker esetén
+                    },
+                    error: function (error) {
+                        console.log("Hiba a képfeltöltés közben:", error);
+                    }
+                });
+            } else {
+                console.log("Hiba: Nincs kiválasztva fájl.");
+            }
+        });
+    });
+    
+    
+    $("#imageUpload").change(function() {
+        readURL(this);
+    });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#placeholderImage').attr('src', e.target.result);
+                $('#imagePreviewContainer').show();
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>All_Courses</title>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel='stylesheet' href='css/style.css'>
+</head>
+<body style='background-color: #048459;'>
+    <header>
+        <!-- NAVBAR START ----------------------------------------------------------------------------------------------------------------------->
+        <nav class ='navbar py-2' style='background-color: #006A42;'>
+            <div class='container'>
+                <div class ='navbar-brand'>
+                    <a class='navbar-item' href='https://csik.sapientia.ro' target='_blank' >   
+                        <img src='img/sapi_logo.jpg' alt='Logo'>
+                    </a>
+                </div>
+                <div class='navbar-content'>
+                    <p class='title is-4'>
+                        Sapientia
+                        <span><br> Erdélyi Magyar
+                        <br> Tudományegyetem</span>
+                    </p>
+                </div>
+
+                <div class='navbar-menu' id='nav-links'>
+                    <div class='navbar-end '>
+                        <a class='navbar-item is-active '><i class='fa fa-home' href='#home'></i></a>
+                        <a class='navbar-item '><i class='fa fa-envelope ' href='#email'></i></a>
+                        <div class='navbar-item has-dropdown is-hoverable'>
+                            <i class='fa fa-cog' id="icon"></i> 
+                            <div class='navbar-dropdown'>
+                                <a class='navbar-item' href="profile.html">Profile</a>
+                                <a class='navbar-item' href='calendar.html'>Calendar</a>
+                                <a class='navbar-item' id="logout">Log Out</a>
+                            </div>
+                        </div>
+                        <div class="user-info">
+                            <img id="profile-image" src="img/usericon.png" alt="Profile Image">
+                            <div id="loggedin-username">
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- NAVBAR END -------------------------------------------------------------------------------------------------------------------------->
+    </header>
+
+    <main>
+        <div class='container'>
+            <div class='section'>
+                <div class='columns'>
+                    <div class='column has-text-centered'>
+                    <h1 class='title' style='color: ghostwhite;'>My Courses</h1><br>
+                    </div>
+                </div>
+                <!-- FIST CARD START ------------------------------------------------------------------------------------------------------------->
+                <div class='row columns is-multiline' id='app'>
+                    <div class='column is-4'>
+                        <div class='card is-shady'>
+                            <div class='card-image'>
+                                <figure class='image is-16by9'>
+                                    <img src='https://images.unsplash.com/photo-1687851898832-650714860119?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80' alt='Image'>
+                                </figure>
+                            </div>
+                            <div class='card-content'>
+                                <div class='media'>
+                                    <div class='media-left'>
+                                        <figure class='image is-48x48'>
+                                            <img src='https://avatars.dicebear.com/api/initials/john%20doe.svg' alt='Image'>
+                                        </figure>
+                                    </div>
+                                    <div class='media-content'>
+                                        <p class='title is-4 no-padding'>Dummy Course</p>
+                                        <p class='subtitle is-6'>Prof XY</p>
+                                    </div>
+                                </div>
+                                <div class='content'>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc iaculis eu nisl quis condimentum. Ut nulla turpis, pellentesque nec posuere vel, sollicitudin eu lorem. Aenean elementum lectus enim, eu sollicitudin lectus tempor sit amet.
+                                    </p>
+                                    <a class='button is-link modal-button is-half' data-target='modal-image2' style='background-color: #006A42;'>View Course
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--FIST CARD END ------------------------------------------------------------------------------------------------------------>
+
+                    <!-- SECOND CARD START ------------------------------------------------------------------------------------------------------->
+                    <div class='column is-4'>
+                        <div class='card is-shady'>
+                            <div class='card-image'>
+                                <figure class='image is-16by9'>
+                                    <img src='https://images.unsplash.com/photo-1687851898832-650714860119?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80' alt='Image'>
+                                </figure>
+                            </div>
+                            <div class='card-content'>
+                                <div class='media'>
+                                    <div class='media-left'>
+                                        <figure class='image is-48x48'>
+                                            <img src='https://avatars.dicebear.com/api/initials/john%20doe.svg' alt='Image'>
+                                        </figure>
+                                    </div>
+                                    <div class='media-content'>
+                                        <p class='title is-4 no-padding'>Dummy Course</p>
+                                        <p class='subtitle is-6'>Prof XY</p>
+                                    </div>
+                                </div>
+                                <div class='content'>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc iaculis eu nisl quis condimentum. Ut nulla turpis, pellentesque nec posuere vel, sollicitudin eu lorem. Aenean elementum lectus enim, eu sollicitudin lectus tempor sit amet.
+                                    </p>
+                                    <a class='button is-link modal-button is-half' data-target='modal-image2' style='background-color: #006A42;'>View Course
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- SECOND CARD END --------------------------------------------------------------------------------------------------------->
+
+                    <!-- THIRS CARD START -------------------------------------------------------------------------------------------------------->
+                    <div class='column is-4'>
+                        <div class='card is-shady'>
+                            <div class='card-image'>
+                                <figure class='image is-16by9'>
+                                    <img src='https://images.unsplash.com/photo-1687851898832-650714860119?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80' alt='Image'>
+                                </figure>
+                            </div>
+                            <div class='card-content'>
+                                <div class='media'>
+                                    <div class='media-left'>
+                                        <figure class='image is-48x48'>
+                                            <img src='https://avatars.dicebear.com/api/initials/john%20doe.svg' alt='Image'>
+                                        </figure>
+                                    </div>
+                                    <div class='media-content'>
+                                        <p class='title is-4 no-padding'>Dummy Course</p>
+                                        <p class='subtitle is-6'>Prof XY</p>
+                                    </div>
+                                </div>
+                                <div class='content'>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc iaculis eu nisl quis condimentum. Ut nulla turpis, pellentesque nec posuere vel, sollicitudin eu lorem. Aenean elementum lectus enim, eu sollicitudin lectus tempor sit amet.
+                                    </p>
+                                    <a class='button is-link modal-button is-half' data-target='modal-image2' style='background-color: #006A42;'>View Course
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- THIRD CARD END --------------------------------------------------------------------------------------------------------->
+                </div>
+            </div>
+        </div>
+<!-- FOOTER START ------------------------------------------------------------------------------------------------------------------------------->
+        <footer class='footer' style='background-color: #006A42'>
+            <div class='container'>
+              <div class='content has-text-centered'>
+                <div class='soc'>
+                  <a href='#'><i class='fa fa-github-alt fa-lg'></i></a>
+                  <a href='#'><i class='fa fa-youtube fa-lg'></i></a>
+                  <a href='#'><i class='fa fa-facebook fa-lg'></i></a>
+                  <a href='#'><i class='fa fa-twitter fa-lg'></i></a>
+                </div>
+                <p style='color:ghostwhite'>
+                    This is a footer created by Richie used <strong>Bulma</strong>!
+                </p>
+            </div>
+        </footer>
+<!-- FOOTER END------------------------------------------------------------------------------------------------------------------------------>
+    </main>
+</body>
+</html>

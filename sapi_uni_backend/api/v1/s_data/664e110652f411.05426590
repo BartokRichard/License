@@ -1,0 +1,538 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: May 22, 2024 at 05:01 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `sapi_uni`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chat`
+--
+
+CREATE TABLE `chat` (
+  `id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `course_id` int(11) NOT NULL,
+  `message` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `chat`
+--
+
+INSERT INTO `chat` (`id`, `student_id`, `course_id`, `message`) VALUES
+(10, 22, 65, '(Kis Pista - 0) Jó Napot§(Fontos Ferencz - 1) Szervusz§(Bogos Berni - 1) Mit szeretnél ponotsan?§(Kis Pista - 0) Tudnának segíteni picit?§(Kis Pista - 0) El akadtam egy picit§(Kis Pista - 0) Mikor érne valamelyikük rá?§(Kis Pista - 0) Bárki§(Kis Pista - 0) Valaki§(Bogos Berni - 1) Szervusz§(Kis Pista - 0) Na végre§(Kis Pista - 0) Méltóztatott§(Kis Pista - 0) Válaszolni§(Kis Pista - 0) Nem értem§(Kis Pista - 0) Most sem§(Kis Pista - 0) Jo napot§(Bogos Berni - 1) Szervusz§(Bogos Berni - 1) Szervusz§(Bogos Berni - 1) Mindenik feladata üres§(Bogos Berni - 1) Elnézést én tévedtem§(Kis Pista - 0) Na csak azért§(Kis Pista - 0) abap§(Bogos Berni - 1) igen?'),
+(11, 23, 65, '(Nagy Katalin - 0) Jó napot!§(Nagy Katalin - 0) Kellene kis segítség§(Nagy Katalin - 0) Akkor semmi§(Nagy Katalin - 0) Ba§(Nagy Katalin - 0) Vannak itt?§(Nagy Katalin - 0) awgth§(Nagy Katalin - 0) sadghjn asb§(Nagy Katalin - 0) asd ghhfdgzv§(Nagy Katalin - 0) asfgdhbnfdjmg§(Nagy Katalin - 0) aSDSFDGFH§(Nagy Katalin - 0) asfdg§(Nagy Katalin - 0) adsfgh§(Nagy Katalin - 0) adsfghj§(Nagy Katalin - 0) asfgdsa§(Nagy Katalin - 0) adsfghjadsfghjadsfghj§(Nagy Katalin - 0) adsfghj adsfghj adsfghj');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `course`
+--
+
+CREATE TABLE `course` (
+  `id` int(11) NOT NULL,
+  `teacher_id` int(11) NOT NULL,
+  `assisstant_teacher_ids` longtext DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `deadline` date NOT NULL,
+  `active` tinyint(2) NOT NULL,
+  `registred_student_id` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '[]'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `course`
+--
+
+INSERT INTO `course` (`id`, `teacher_id`, `assisstant_teacher_ids`, `name`, `description`, `deadline`, `active`, `registred_student_id`) VALUES
+(65, 24, '[\"26\"]', 'Valamike :)', 'Lorem ipsum dolor sit ame', '2026-07-01', 1, '[23, 22]'),
+(66, 24, '[]', 'Második Teszt Kurzus', 'Aliquam sed tincidunt velit, eu pulvinar nisi. Quisque lacinia a risus et vehicula. Pellentesque laoreet ultrices nulla, sed condimentum nisl. Donec rutrum ornare orci, in maximus szerkesztve megint', '2024-10-01', 1, '[23, 22]'),
+(67, 24, '[\"25\"]', 'Teszt Kurzus Megint', 'leírás me kell ide is', '2024-05-30', 1, '[]');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `events`
+--
+
+CREATE TABLE `events` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(155) NOT NULL,
+  `date_time` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`id`, `user_id`, `name`, `date_time`) VALUES
+(16, 22, 'Államvizsga Védés ; 22:00', '2024-07-02 22:00:00'),
+(17, 24, 'Meine keine szülinap. AKA. bebaszás ; 18:35', '2024-08-28 18:35:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `modules`
+--
+
+CREATE TABLE `modules` (
+  `id` int(11) NOT NULL,
+  `course_id` int(11) NOT NULL,
+  `name` varchar(120) NOT NULL,
+  `deadline` date NOT NULL,
+  `description` varchar(450) NOT NULL,
+  `students_to_eval` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`students_to_eval`))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `modules`
+--
+
+INSERT INTO `modules` (`id`, `course_id`, `name`, `deadline`, `description`, `students_to_eval`) VALUES
+(71, 65, 'Első Modulka', '2024-07-01', 'Vestibulum in rutrum magna. Quisque imperdiet vulputate nulla, id viverra lorem auctor at. Maecenas quis orci porttitor augue volutpat efficitur eget vel Phasellus suscipit sem egPhasellus suscipit sem eget ante dapibus tempor. Mauris sit amet nunc erat. Suspendisse libero enim, tincidunt ultricies dignissim tempor, placerat sit amet justo. Sed semper vel lectus ut rutrum.', '[22]'),
+(72, 65, 'Második Modul', '2024-06-30', 'Phasellus suscipit sem eget ante dapibus tempor. Mauris sit amet nunc erat. Suspendisse libero enim, tincidunt ultricies dignissim tempor, placerat sit amet justo. Sed semper vel lectus ut rutrum. ', '[]'),
+(74, 66, 'Elso Modul', '2024-06-01', 'valvmai agasg agavasf', '[]'),
+(75, 66, 'Elso Modul', '2024-05-23', 'valvma asfasga la slsaf', '[]'),
+(92, 65, 'Első Modul :))))))', '2024-06-06', 'asfsv asvdfv da dasdv fdsfvab ad nfsad fsdaf sa fsad sad sadfsasad fsdaf sa fsad sad sadfsasad fsdaf sa fsad sad sadfsasad fsdaf sa fsad sad sadfsasad fsdaf sa fsad sad sadfsa', '[]'),
+(94, 67, 'Első Modul', '2024-05-17', 'vasdv dagsavdafgsadvsdaf', '[]');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `module_tasks`
+--
+
+CREATE TABLE `module_tasks` (
+  `id` int(11) NOT NULL,
+  `module_id` int(11) NOT NULL,
+  `task_name` varchar(100) NOT NULL,
+  `task_description` varchar(255) NOT NULL,
+  `deadline` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `module_tasks`
+--
+
+INSERT INTO `module_tasks` (`id`, `module_id`, `task_name`, `task_description`, `deadline`) VALUES
+(93, 71, 'Első Feladat', 'Phasellus suscipit sem eget ante dapibus tempor. Mauris sit amet nunc erat. Suspendisse libero enim, tincidunt ultricies dignissim tempor, placerat sit amet justo. Sed semper vel lectus ut rutrum. ', '2024-05-31'),
+(94, 72, 'Feladat 1 ', 'Phasellus suscipit sem eget ante dapibus tempor. Mauris sit amet nunc erat. Suspendisse libero enim, tincidunt ultricies dignissim tempor, placerat sit amet justo. Sed semper vel lectus ut rutrum. ', '2024-05-10'),
+(96, 71, 'Második Feladat', 'Phasellus suscipit sem eget ante dapibus tempor. Mauris sit amet nunc erat. Suspendisse libero enim, tincidunt ultricies dignissim tempor, placerat sit amet justo. Sed semper vel lectus ut rutrum. ', '2024-05-10'),
+(100, 94, 'Feladat 1', 'asfav sdvvsvsdfadsfa', '2024-05-17'),
+(105, 92, 'asdsafsa asf ', 'sad fsdaf sa fsad sad sadfsa', '0000-00-00'),
+(106, 92, 'sadfd sa fdsa', 'as fa sa as fs dsgadg ds ', '2024-05-09');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `id` int(11) NOT NULL,
+  `sender` int(11) NOT NULL,
+  `receiver` int(11) NOT NULL,
+  `type` tinyint(4) NOT NULL,
+  `redirect` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`id`, `sender`, `receiver`, `type`, `redirect`, `message`, `date`) VALUES
+(90, 22, 24, 1, 'grading.html?module_id=71', 'Kis Pista-től egy új üzeneted érkezett!', '2024-05-16 11:55:45'),
+(91, 22, 26, 1, 'grading.html?module_id=71', 'Kis Pista-től egy új üzeneted érkezett!', '2024-05-16 11:55:45'),
+(92, 24, 22, 1, 'course.html?course_id=65', 'Bogos Berni-től egy új üzeneted érkezett!', '2024-05-16 11:56:02'),
+(93, 22, 24, 1, 'grading.html?module_id=71', 'Kis Pista egy új modult adott le osztályozásra!', '2024-05-22 17:39:24'),
+(94, 22, 26, 1, 'grading.html?module_id=71', 'Kis Pista egy új modult adott le osztályozásra!', '2024-05-22 17:39:24'),
+(95, 22, 24, 1, 'grading.html?module_id=71', 'Kis Pista egy új modult adott le osztályozásra!', '2024-05-22 17:47:14'),
+(96, 22, 26, 1, 'grading.html?module_id=71', 'Kis Pista egy új modult adott le osztályozásra!', '2024-05-22 17:47:14'),
+(97, 22, 24, 1, 'grading.html?module_id=71', 'Kis Pista egy új modult adott le osztályozásra!', '2024-05-22 17:47:37'),
+(98, 22, 26, 1, 'grading.html?module_id=71', 'Kis Pista egy új modult adott le osztályozásra!', '2024-05-22 17:47:37'),
+(99, 22, 24, 1, 'grading.html?module_id=71', 'Kis Pista egy új modult adott le osztályozásra!', '2024-05-22 17:47:55'),
+(100, 22, 26, 1, 'grading.html?module_id=71', 'Kis Pista egy új modult adott le osztályozásra!', '2024-05-22 17:47:55'),
+(101, 22, 24, 1, 'grading.html?module_id=71', 'Kis Pista egy új modult adott le osztályozásra!', '2024-05-22 17:48:18'),
+(102, 22, 26, 1, 'grading.html?module_id=71', 'Kis Pista egy új modult adott le osztályozásra!', '2024-05-22 17:48:18'),
+(103, 22, 24, 1, 'grading.html?module_id=71', 'Kis Pista egy új modult adott le osztályozásra!', '2024-05-22 17:49:01'),
+(104, 22, 26, 1, 'grading.html?module_id=71', 'Kis Pista egy új modult adott le osztályozásra!', '2024-05-22 17:49:01');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `students_progress`
+--
+
+CREATE TABLE `students_progress` (
+  `id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `course_id` int(11) NOT NULL,
+  `module_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `students_progress`
+--
+
+INSERT INTO `students_progress` (`id`, `student_id`, `course_id`, `module_id`) VALUES
+(21, 23, 65, 71),
+(22, 22, 65, 72);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `students_task_files`
+--
+
+CREATE TABLE `students_task_files` (
+  `uuid` char(36) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `task_id` int(11) NOT NULL,
+  `file_name` varchar(255) NOT NULL,
+  `upload_date` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `students_task_files`
+--
+
+INSERT INTO `students_task_files` (`uuid`, `student_id`, `task_id`, `file_name`, `upload_date`) VALUES
+('6632c8ac46fe81.83389795', 22, 93, 'Book1.csv', '2024-05-02 01:56:44'),
+('6638c82d82b683.66630871', 22, 94, 'sap.txt', '2024-05-06 15:08:13');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `students_works`
+--
+
+CREATE TABLE `students_works` (
+  `id` int(11) NOT NULL,
+  `module_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `teacher_id` int(11) NOT NULL,
+  `grade` float NOT NULL,
+  `grading_date` datetime DEFAULT current_timestamp(),
+  `passed` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `students_works`
+--
+
+INSERT INTO `students_works` (`id`, `module_id`, `student_id`, `teacher_id`, `grade`, `grading_date`, `passed`) VALUES
+(53, 71, 22, 26, 2, '2024-04-29 19:20:38', 0),
+(54, 71, 22, 26, 2, '2024-04-29 19:37:18', 1),
+(55, 71, 22, 26, 2, '2024-04-29 19:39:50', 0),
+(56, 72, 22, 26, 5, '2024-04-29 19:40:54', 0),
+(57, 71, 22, 24, 5, '2024-05-02 02:48:05', 1),
+(58, 72, 22, 24, 2, '2024-05-05 16:32:13', 0),
+(59, 71, 22, 24, 5, '2024-05-06 15:07:18', 1),
+(60, 72, 22, 24, 2, '2024-05-16 11:54:45', 0),
+(61, 71, 22, 24, 8, '2024-05-22 16:58:06', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `task_files`
+--
+
+CREATE TABLE `task_files` (
+  `id` int(11) NOT NULL,
+  `task_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `filename` varchar(255) NOT NULL,
+  `uuid` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `task_files`
+--
+
+INSERT INTO `task_files` (`id`, `task_id`, `user_id`, `filename`, `uuid`) VALUES
+(50, 93, 26, 'Java_Vizsga_Minta.docx', '662fc9d2626f3'),
+(53, 96, 26, 'Diplomadolgozat_sablon_2024.docx', '662fcc8c8146c'),
+(54, 96, 24, 'hallgatok.csv', '6632c8687b69d'),
+(57, 100, 24, 'Java_Vizsga_Minta (3).docx', '6645bc4253f63'),
+(76, 106, 24, 'Diplomadolgozat_sablon_2024 (1) (1).docx', '664bb01c33e88'),
+(77, 106, 24, 'Diplomadolgozat_sablon_2024 (1) (1).docx', '664bb01c36581'),
+(78, 106, 24, 'Diplomadolgozat_sablon_2024 (1) (1).docx', '664bb01c38b02'),
+(79, 105, 24, 'Diplomadolgozat_sablon_2024 (1) (1).docx', '664bb0477e547');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `auth` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`auth`)),
+  `role` tinyint(3) NOT NULL,
+  `active` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `auth`, `role`, `active`) VALUES
+(22, 'Kis Pista', 'pista@pista.com', '{\"password\": \"5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8\"}', 0, 1),
+(23, 'Nagy Katalin', 'nkata@kata.com', '{\"password\": \"a10ac6bcce5267cafd091f33bf6874f98a51abf7515105b68964f301900dff3f\"}', 0, 1),
+(24, 'Bogos Berni', 'bberni@bogos.com', '{\"password\": \"421b8c4cc4edc4691dbbadbdb0e1944cfd05302da1c694111785bd0be475493a\"}', 1, 1),
+(25, 'Kelemen Anna', 'kelemen@kel.com', '{\"password\": \"5dbf18c4cc95e3821dc3409cf4499cb184aa6c0da9257bf6cdb7a5a726726380\"}', 1, 1),
+(26, 'Fontos Ferencz', 'ferike@fontos.com', '{\"password\": \"9928eb8b48df7ba01ab6973f15ee87baacb425adbe319ac54b9afa55b97f9aa6\"}', 1, 1),
+(27, 'Toth Kevin', 'tothkevin@uni.sapientia.ro ', '{\"password\": \"189db7558ba552b2a3e8bbdad463873360e1b6f7a50345a80b03ade289253ef8\"}', 0, 1);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `chat`
+--
+ALTER TABLE `chat`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `studnet_id` (`student_id`),
+  ADD KEY `course_id` (`course_id`);
+
+--
+-- Indexes for table `course`
+--
+ALTER TABLE `course`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `teacher_id` (`teacher_id`);
+
+--
+-- Indexes for table `events`
+--
+ALTER TABLE `events`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `modules`
+--
+ALTER TABLE `modules`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `module_course` (`course_id`);
+
+--
+-- Indexes for table `module_tasks`
+--
+ALTER TABLE `module_tasks`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `moduleTasks_student` (`module_id`);
+
+--
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sender` (`sender`),
+  ADD KEY `receiver` (`receiver`);
+
+--
+-- Indexes for table `students_progress`
+--
+ALTER TABLE `students_progress`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `course_id` (`course_id`),
+  ADD KEY `module_id` (`module_id`),
+  ADD KEY `studnet_id` (`student_id`);
+
+--
+-- Indexes for table `students_task_files`
+--
+ALTER TABLE `students_task_files`
+  ADD PRIMARY KEY (`uuid`),
+  ADD KEY `studnet_id` (`student_id`),
+  ADD KEY `task_id` (`task_id`);
+
+--
+-- Indexes for table `students_works`
+--
+ALTER TABLE `students_works`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `studentWord_student` (`student_id`),
+  ADD KEY `studentWord_module` (`module_id`),
+  ADD KEY `teacher_id` (`teacher_id`);
+
+--
+-- Indexes for table `task_files`
+--
+ALTER TABLE `task_files`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `task_id` (`task_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `chat`
+--
+ALTER TABLE `chat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `course`
+--
+ALTER TABLE `course`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+
+--
+-- AUTO_INCREMENT for table `events`
+--
+ALTER TABLE `events`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `modules`
+--
+ALTER TABLE `modules`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+
+--
+-- AUTO_INCREMENT for table `module_tasks`
+--
+ALTER TABLE `module_tasks`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+
+--
+-- AUTO_INCREMENT for table `notifications`
+--
+ALTER TABLE `notifications`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+
+--
+-- AUTO_INCREMENT for table `students_progress`
+--
+ALTER TABLE `students_progress`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `students_works`
+--
+ALTER TABLE `students_works`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+
+--
+-- AUTO_INCREMENT for table `task_files`
+--
+ALTER TABLE `task_files`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `chat`
+--
+ALTER TABLE `chat`
+  ADD CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `chat_ibfk_2` FOREIGN KEY (`course_id`) REFERENCES `course` (`id`);
+
+--
+-- Constraints for table `course`
+--
+ALTER TABLE `course`
+  ADD CONSTRAINT `course_ibfk_1` FOREIGN KEY (`teacher_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `events`
+--
+ALTER TABLE `events`
+  ADD CONSTRAINT `events_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `modules`
+--
+ALTER TABLE `modules`
+  ADD CONSTRAINT `module_course` FOREIGN KEY (`course_id`) REFERENCES `course` (`id`);
+
+--
+-- Constraints for table `module_tasks`
+--
+ALTER TABLE `module_tasks`
+  ADD CONSTRAINT `moduleTask_module` FOREIGN KEY (`module_id`) REFERENCES `modules` (`id`);
+
+--
+-- Constraints for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`sender`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `notifications_ibfk_2` FOREIGN KEY (`receiver`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `students_progress`
+--
+ALTER TABLE `students_progress`
+  ADD CONSTRAINT `students_progress_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `course` (`id`),
+  ADD CONSTRAINT `students_progress_ibfk_2` FOREIGN KEY (`module_id`) REFERENCES `modules` (`id`),
+  ADD CONSTRAINT `students_progress_ibfk_3` FOREIGN KEY (`student_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `students_task_files`
+--
+ALTER TABLE `students_task_files`
+  ADD CONSTRAINT `students_task_files_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `students_task_files_ibfk_2` FOREIGN KEY (`task_id`) REFERENCES `module_tasks` (`id`);
+
+--
+-- Constraints for table `students_works`
+--
+ALTER TABLE `students_works`
+  ADD CONSTRAINT `studentWord_module` FOREIGN KEY (`module_id`) REFERENCES `modules` (`id`),
+  ADD CONSTRAINT `studentWord_student` FOREIGN KEY (`student_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `students_works_ibfk_1` FOREIGN KEY (`teacher_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `task_files`
+--
+ALTER TABLE `task_files`
+  ADD CONSTRAINT `task_files_ibfk_1` FOREIGN KEY (`task_id`) REFERENCES `module_tasks` (`id`),
+  ADD CONSTRAINT `task_files_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

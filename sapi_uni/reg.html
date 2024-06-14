@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Registration Form</title> 
+     <link rel="icon" type="image/png" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <div class="container" id="reg">
+      <div class="wrapper">
+        <div class="title"><span>Sign Up</span></div>
+        <form action="#">
+          <div class="row">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Adja meg az e-mail címet" required id="email">
+          </div>
+          <div class="row">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Válasszon egy jelszavat" required id="password">
+          </div>
+          <div class="row">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Ismélje meg a jelszavat" required id="password2">
+          </div>
+          <div class="error" id="passwordError"></div>          
+          <div class="row">
+            <i class="fas fa-eye" id="togglePassword"><span>Jelszó Megjelenítése</span></i>
+          </div>
+          <div class="row button">
+            <input type="submit" value="Login">
+          </div>
+          <div class="signup-link">Már van fiókod?<a href="login.html">Jelentekezz be!</a></div>
+        </form>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function() {
+      $('#togglePassword').on('click', function() {
+      var passwordField = $('#password');
+      var password2Field = $('#password2');
+      var passwordFieldType = passwordField.attr('type');
+      var password2FieldType = password2Field.attr('type');
+
+      if (passwordFieldType === 'password') {
+        passwordField.attr('type', 'text');
+      } else {
+        passwordField.attr('type', 'password');
+      }
+
+      if (password2FieldType === 'password') {
+        password2Field.attr('type', 'text');
+      } else {
+        password2Field.attr('type', 'password');
+      }
+    });
+
+      $('form').submit(function(event) {
+      var password1 = $('#password').val();
+      var password2 = $('#password2').val();
+      var email = $('#email').val();
+      var passwordError = $('#passwordError');
+
+      if (password1 !== password2) {
+        passwordError.text('Passwords do not match.');
+        event.preventDefault(); 
+      } else {
+        passwordError.text('');
+        window.location.href = 'course.html';
+      }
+      });
+    });
+    </script>
+  </body>
+</html>

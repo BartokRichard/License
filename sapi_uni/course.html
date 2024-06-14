@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<!-- feldatok bold, leiras ele utan tobb oedding -->
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Kurzus</title>
+    <link rel="icon" type="image/png" href="img/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel='stylesheet' href='css/course.css'>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script/generals.js"></script>
+    <script src="script/notifications.js" defer></script>
+    <script src="script/course.js" defer></script>
+    <script src="script/module.js" defer></script>
+    <script src="script/task.js" defer></script>
+    <script src="script/chat.js" defer></script>
+    <style>
+        .button .fa-arrow-down {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .button:hover .fa-arrow-down,
+        .dropdown.is-active .button .fa-arrow-down,
+        .dropdown-content:hover + .dropdown-trigger .button .fa-arrow-down {
+            transform: rotate(180deg);
+        }
+
+        .button:not(:hover) .fa-arrow-down,
+        .dropdown:not(.is-active) .button:not(:hover) .fa-arrow-down {
+            transform: rotate(0deg);
+        }
+        
+    </style>
+</head>
+<body style='background-color: #4c956c;'>
+    <header>
+        <!-- NAVBAR START ----------------------------------------------------------------------------------------------------------------------->
+        <nav class='navbar py-2' style='background-color: #006A42;'>
+            <div class='container'>
+                <div class='navbar-brand'>
+                    <a class='navbar-item' href='https://csik.sapientia.ro' target='_blank'>
+                        <img src='img/sapi_logo.jpg' alt='Logo'>
+                    </a>
+                </div>
+                <div class='navbar-content'>
+                    <p class='title is-4'>
+                        Sapientia
+                        <span><br> Erdélyi Magyar
+                        <br> Tudományegyetem</span>
+                    </p>
+                </div>
+
+                <div class='navbar-menu' id='nav-links'>
+                    <div class='navbar-end '>
+                        <a class='navbar-item is-active' href='all_courses.html'><i class='fa fa-home'></i></a>
+                        <div class='navbar-item has-dropdown is-hoverable'>
+                            <a class='navbar-item' href="#"><i class='fa fa-envelope'></i></a>
+                            <div class='navbar-dropdown' id="notificationContainer">
+                                <!-- Notification items will be dynamically inserted here -->
+                            </div>
+                        </div>
+
+                        <div class='navbar-item has-dropdown is-hoverable'>
+                            <i class='fa fa-cog' id="icon"></i> 
+                            <div class='navbar-dropdown'>
+                                <a class='navbar-item' href="profile.html">Profil</a>
+                                <a class='navbar-item' href='calendar.html'>Naptár</a>
+                                <a class='navbar-item' id="logout">Kijelentkezés</a>
+                            </div>
+                        </div>
+                        <div class="user-info">
+                            <img class="profile-image" id="profile-image" src="img/usericon.png" alt="Profile Image">
+                            <div id="loggedin-username">
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- NAVBAR END -------------------------------------------------------------------------------------------------------------------------->
+    </header>
+      
+    <main class="bg_1">
+        <div id="notification" class="notification is-hidden has-text-centered" style="background-color: red; color: aliceblue ;">
+            <span id="notification-message"></span>
+        </div>
+
+        <div class='container'>
+            <div class='section pl-0 pr-0'>
+                <h1 class='title has-text-centered mb-0 course_name ml-6' style='color: ghostwhite;' id="course_name"></h1><br>
+                <div class='columns is-centered mr-6'>
+                    <div class='column is-7'>
+                        <div class='teacher my-6 mx-6'>
+                            <div class='teacher_img'>
+                                <img src='img/prof_icon.png' class='teacher' height='100' width='100'>    
+                            </div>
+                            <div class='teacher_content pt-6 has-text-centered'>
+                                <h4 class='pb-2 is-size-4'>
+                                    <a href='#' class='is-capitalize teacher-name'>
+                                
+                                    </a>
+                                </h4>
+                                <p class="pb-2">Egyetemi tanár</p>
+                                <p class="fa-audio course_description" id="course_description"></p>
+                                    
+                                </p>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Dropdown modules -->
+                <ul style="color:whitesmoke; width: 100%;" id="modulesList">
+                    <!-- Modules will be dynamically added here -->
+                </ul>
+            </div>
+        </div>
+
+        <!-- File Upload Modal -->
+        <div id="fileUploadModal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="box">
+                    <h3 class="title is-3 has-text-centered">Fájl feltöltés</h3>
+                    <div class="field">
+                        <div class="file has-name is-boxed">
+                            <label class="file-label">
+                                <input class="file-input" id="fileUploadInput" type="file" name="file">
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fas fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">
+                                        Válasszon ki egy fájlt
+                                    </span>
+                                </span>
+                                <span class="file-name">
+                                    Nincs fájl kiválasztva
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <button class="button is-success" id="uploadFileBtn">Fájl feltöltés</button>
+                    <a class="button cancel-modal-btn" id="cancel-upload-btn">Mégsem</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Dialog ablak a kurzustörlés megerősítésehez -->
+        <div id="confirmationModal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="box">
+                    <p>Biztos szeretné törölni ezt a kurzust?</p>
+                    <button class="button is-danger modal-confirm">Igen</button>
+                    <a class="button cancel-modal-btn" id="cancel-delete-course-btn">Mégsem</a>
+                </div>
+            </div>
+        </div>  
+        <div id="fileDeleteModal" class="modal" >
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="box">
+                    <p>Biztos szeretné törölni ezt a fájlt?</p>
+                    <button class="button is-danger deleteConfirmFile">Igen</button>
+                    <a class="button" id="cancelDeleteFile">Mégsem</a>
+                </div>
+            </div>
+        </div>
+        <div id="confirmSumitModal" class="modal">
+            <div class="modal-background">
+                <div id="successMessageSubmitModule" class="notification is-success is-hidden has-text-centered">
+                    
+                </div>
+            </div>
+            <div class="modal-content">
+            <div class="box">
+                <p>Biztos le szeretné adni a modult osztályozásra?</p>
+                <button class="button is-info modal-confirm" id="confirm_submit_module">Igen</button>
+                <a class="button cancel-modal-btn" id="cancel-submit-module-btn">Mégsem</a>
+            </div>
+            </div>
+        </div>  
+        <div id="confirmationModuleModal" class="modal">
+            <div class="modal-background">
+                <div id="successMessageDeleteModule" class="notification is-success is-hidden has-text-centered">
+                    
+                </div>
+            </div>
+            <div class="modal-content">
+            <div class="box">
+                <p>Biztos szeretné törölni ezt a modult?</p>
+                <button class="button is-danger modal-confirm" id="confirm_delete_module">Igen</button>
+                <a class="button cancel-modal-btn" id="cancel-delete-module-btn">Mégsem</a>
+            </div>
+            </div>
+        </div>  
+        <div id="confirmationTaskModal" class="modal">
+            <div class="modal-background">
+                <div id="successMessageDeleteTask" class="notification is-success is-hidden has-text-centered">
+                  
+                </div>
+            </div>
+            <div class="modal-content">
+                <div class="box">
+                    <p>Biztos szeretné törölni ezt a feladatot?</p>
+                    <button class="button is-danger modal-confirm" id="confirm_delete_task">Igen</button>
+                    <a class="button cancel-modal-btn" id="cancel-delete-task-btn">Mégsem</a>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Dialog ablak a module hozzáadáshoz -->
+        <div id="createModuleModal" class="modal">
+            <div class="modal-background">
+
+            </div>
+            <div class="modal-content">
+                <div class="box">
+                    <h2 class="title is-4 has-text-centered">Új Modul Létrehozása</h2>
+                    <div class="field">
+                        <label class="label">Modul Neve</label>
+                        <div class="control">
+                            <input class="input" type="text" id="moduleName" maxlength="50" placeholder="Adja meg a modul nevét">
+                            <p id="moduleNameCount" class="character-count">0/50</p>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Modul Leírása</label>
+                        <div class="control">
+                            <textarea class="textarea" id="moduleDescription" maxlength="200" placeholder="Adja meg a modul leírását"></textarea>
+                            <p id="moduleDescriptionCount" class="character-count">0/200</p>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Modul Határideje</label>
+                        <div class="control">
+                            <input class="input" type="date" id="moduleDeadline">
+                        </div>
+                    </div>
+                    <div class="buttons mt-4">
+                        <a class='button is-success mr-2' id='create-module-btn-confirm'>Module Létrehozása</a>
+                        <a class="button cancel-modal-btn" id="cancel-create-module-btn">Mégsem</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div id="editCourseModal" class="modal">
+            <div class="modal-background">
+            
+            </div>
+            <div class="modal-content"> 
+                <div class="box">
+                    <h2 class="title is-4 has-text-centered">Kurzus Szerkesztése</h2>
+                    <div class="field">
+                        <label class="label">Kurzus Címe</label>
+                        <div class="control has-icons-right">
+                            <input class="input" type="text" id="editCourseTitle" placeholder="Adja meg a kurzus nevét" minlength="5" required>
+                            <span id="editCourseTitleCount" class="character-count">0/50</span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Kurzus Leírása</label>
+                        <div class="control has-icons-right">
+                            <textarea class="textarea" id="editCourseDescription" placeholder="Adja meg a modul leírásást" minlength="20" required></textarea>
+                            <span id="editCourseDescCount" class="character-count">0/200</span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Kurzus Határideje</label>
+                        <div class="control">
+                            <input class="input" type="date" id="editCourseDeadline">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Tanár Hozzáadása</label>
+                        <div class="control">
+                            <div class="select">
+                                <select id="editCourseTeacher">
+                                    <option>Tanár kiválasztva</option>
+                                    <!-- Add options dynamically here -->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-grouped is-grouped-centered">
+                        <p class="control">
+                            <a class="button is-success" id="edit-course-btn">Változtatások Mentése</a>
+                        </p>
+                        <p class="control">
+                            <a class="button cancel-modal-btn" id="cancel-edit-course-btn">Mégsem</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="createTaskModal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="box">
+                    <h3 class="title is-3 has-text-centered">Új Feladat Leítrehozása</h3>
+                    <div class="field">
+                        <label class="label">Feladat Neve</label>
+                        <div class="control">
+                            <input id="taskName" class="input" type="text" maxlength="50" placeholder="Adja meg a feladat nevét">
+                            <p id="taskNameCount" class="character-count">0/50</p>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Feladat Leírása</label>
+                        <div class="control">
+                            <textarea id="taskDescription" class="textarea" maxlength="200" placeholder="Adja meg a feladat leírását"></textarea>
+                            <p id="taskDescriptionCount" class="character-count">0/200</p>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Feladat Határideje</label>
+                        <div class="control">
+                            <input id="taskDeadline" class="input" type="date">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Fájl Feltöltése</label>
+                        <div class="file has-name is-boxed">
+                            <label class="file-label">
+                                <input class="file-input" id="taskFileInput" type="file" name="resume">
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fas fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">Fájl kiválasztása…</span>
+                                </span>
+                                <span class="file-name">Nincs fájl kiválasztva</span>
+                            </label>
+                        </div>
+                    </div>
+                    <button id="createTaskBtn" class="button is-success">Feladat Létrehozása</button>
+                    <a class="button cancel-modal-btn" id="cancel-add-task-btn">Mégsem</a>
+                </div>
+            </div>
+        </div>
+        
+
+        <div id="editModuleModal" class="modal">
+            <div class="modal-background">
+            
+            </div>
+            <div class="modal-content">
+                <div class="box">
+                    <h3 class="title is-3">Modul Szerkesztése</h3>
+                    <div class="field">
+                        <label class="label">Modul Neve</label>
+                        <div class="control">
+                            <input id="editModuleName" class="input" type="text" maxlength="50" placeholder="Adja meg a modul nevét">
+                            <p id="editModuleNameCount" class="character-count">0/50</p> <!-- Karakterszámláló a felhasználói input mező alatt -->
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Modul Leírása</label>
+                        <div class="control">
+                            <textarea id="editModuleDescription" class="textarea" maxlength="200" placeholder="Adja meg a modul leírását"></textarea>
+                            <p id="editModuleDescriptionCount" class="character-count">0/200</p> <!-- Karakterszámláló a felhasználói input mező alatt -->
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Modul Határideje</label>
+                        <div class="control">
+                            <input id="editModuleDeadline" class="input" type="date">
+                        </div>
+                    </div>
+                    <button id="edit-module-confirm-btn" class="button is-success">Változtatások Mentése</button>
+                    <a class="button cancel-modal-btn" id="cancel-edit-module-btn">Mégsem</a>
+                </div>
+            </div>
+        </div> 
+        <div class="container">
+            <div class="section">
+                <div class="chat-button-container">
+                    <!-- <button class="button chat-button is-rounded is-large" id="chat-toggle-button">Chat</button> -->
+                </div>
+        
+                <!-- Chat ablak -->
+                <div class="chat-container">
+                    <!-- Tanár neve -->
+                    <div class="teacher-name-box notification">
+                        <p class="title is-4 course_title">Kurzus Neve</p>
+                    </div>
+        
+                    <!-- Üzenetek megjelenítése -->
+                    <div id="messages">
+                       
+                    </div>
+        
+                    <!-- Üzenet küldése -->
+                    <div class="message-input field has-addons">
+                        <div class="control is-expanded">
+                            <input class="input" type="text" id="msg-inp" placeholder="Írja be az üzenetet...">
+                        </div>
+                        <div class="control">
+                            <button class="button is-rounded send-message-button" id ="send-msg-btn">
+                                <i class="fa fa-angle-right" style="font-size:36px;"></i>
+                            </button>
+                        </div>
+                    </div>
+        
+                    <!-- Bezáró gomb -->
+                    <button class="delete" id="chat-close-button"></button>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+    <div class="container action_buttons">
+        <span class='button is-link mt-6 course-edit-btn' style="display: none;"  data-target='modal-image2'>
+            Kurzus Szerkesztése
+        </span>
+    </div>
+    </main>
+   
+   
+    <footer class='footer' style='background-color: #006A42'>
+        <img src="img/footer_left.png" alt="" class="left">
+        <img src="img/footer_left.png" alt="" class="left" id="sec">
+        <img src="img/footer_right.png" alt="" class="right">
+        <img src="img/footer_right.png" alt="" class="right" id="sec_ag">
+        <div class='container'>
+            <div class='content has-text-centered'>
+                <div class='soc'>
+                    <a href='#'><i class='fa fa-github-alt fa-lg'></i></a>
+                    <a href='#'><i class='fa fa-youtube fa-lg'></i></a>
+                    <a href='#'><i class='fa fa-facebook fa-lg'></i></a>
+                    <a href='#'><i class='fa fa-twitter fa-lg'></i></a>
+                </div>
+                
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER END------------------------------------------------------------------------------------------------------------------------------>
+    
+</body>
+</html>

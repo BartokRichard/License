@@ -1,0 +1,150 @@
+
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Profile</title>
+    <link rel="icon" type="image/png" href="img/favicon.ico">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel='stylesheet' href='css/profile.css'>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script/generals.js" ></script>
+    <script src="script/loadProfilePage.js" defer></script>
+    <script src="script/notifications.js" defer></script>
+</head>
+<body style='background-color: #4c956c;'>
+    <header>
+        <!-- NAVBAR START ----------------------------------------------------------------------------------------------------------------------->
+        <nav class ='navbar py-2' style='background-color: #006A42;'>
+            <div class='container'>
+                <div class ='navbar-brand'>
+                    <a class='navbar-item' href='https://csik.sapientia.ro' target='_blank' >   
+                        <img src='img/sapi_logo.jpg' alt='Logo'>
+                    </a>
+                </div>
+                <div class='navbar-content'>
+                    <p class='title is-4'>
+                        Sapientia
+                        <span><br> Erdélyi Magyar
+                        <br> Tudományegyetem</span>
+                    </p>
+                </div>
+
+                <div class='navbar-menu' id='nav-links'>
+                    <div class='navbar-end '>
+                        <a class='navbar-item is-active' href='all_courses.html'><i class='fa fa-home'></i></a>
+                        <a class='navbar-item '><i class='fa fa-envelope ' href='#email'></i></a>
+                        <div class='navbar-item has-dropdown is-hoverable'>
+                            <i class='fa fa-cog' id="icon"></i> 
+                            <div class='navbar-dropdown'>
+                                <a class='navbar-item' href="profile.html">Profil</a>
+                                <a class='navbar-item' href='calendar.html'>Naptár</a>
+                                <a class='navbar-item' id="logout">Kijelentkezés</a>
+                            </div>
+                        </div>
+                        <div class="user-info">
+                            <img class="profile-image" id="profile-image" src="img/usericon.png" alt="Profile Image">
+                            <div id="loggedin-username">
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- NAVBAR END -------------------------------------------------------------------------------------------------------------------------->
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="section">
+                <section class="section">
+                    <div class="container">
+                        <div class="columns is-centered">
+                            <div class="column is-half">
+                                <form id="uploadForm" enctype="multipart/form-data" class="box">
+                                    <div class="field">
+                                        <label class="label">Upload CSV File</label>
+                                        <div class="control">
+                                            <div class="file has-name is-boxed">
+                                                <label class="file-label">
+                                                    <input class="file-input" type="file" name="file" required accept=".csv">
+                                                    <span class="file-cta">
+                                                        <span class="file-icon">
+                                                            <i class="fas fa-upload"></i>
+                                                        </span>
+                                                        <span class="file-label">
+                                                            Choose a file…
+                                                        </span>
+                                                    </span>
+                                                    <span class="file-name">
+                                                        No file selected
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="control">
+                                            <button type="submit" class="button is-link">Upload</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="bg_img">
+            <img src="img/bg.png" alt="icon">
+        </div>
+    </main>
+<!-- FOOTER START ------------------------------------------------------------------------------------------------------------------------------->
+        <footer class='footer' style='background-color: #006A42'>
+            <img src="img/footer_left.png" alt="" class="left">
+            <img src="img/footer_left.png" alt="" class="left" id="sec">
+            <img src="img/footer_right.png" alt="" class="right">
+            <img src="img/footer_right.png" alt="" class="right" id="sec_ag">
+            <div class='container'>
+              <div class='content has-text-centered'>
+                <div class='soc'>
+                  <a href='#'><i class='fa fa-github-alt fa-lg'></i></a>
+                  <a href='#'><i class='fa fa-youtube fa-lg'></i></a>
+                  <a href='#'><i class='fa fa-facebook fa-lg'></i></a>
+                  <a href='#'><i class='fa fa-twitter fa-lg'></i></a>
+                </div>
+            </div>
+        </footer>
+<!-- FOOTER END------------------------------------------------------------------------------------------------------------------------------>
+    </main>
+    <script>
+
+        $(document).ready(function(){
+            $('#uploadForm').on('submit', function(e){
+                e.preventDefault();
+                var formData = new FormData(this);
+                APICall({
+                    url: 'upload/users',
+                    type: 'POST',
+                    data: formData,
+                    success: function (data) {
+                        alert('File uploaded successfully');
+                        console.log(data);
+                    },
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                });
+            });
+    
+            $('.file-input').change(function(e){
+                var fileName = e.target.files[0].name;
+                $('.file-name').text(fileName);
+            });
+        });
+    </script>
+</body>
+</html>

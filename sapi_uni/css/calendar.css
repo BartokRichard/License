@@ -1,0 +1,294 @@
+
+.bg_img {
+    position: relative;
+    z-index: 10;
+
+}
+body {
+  background-image: url('../img/bg.png');
+  background-position: center 200px;
+  background-repeat: no-repeat;
+}
+
+.bg_img img{
+  margin-top: -100px;
+}
+.row {
+  position: absolute;
+  z-index: 10;
+  top: 150%;
+}
+
+.footer img{
+  width: 250px;
+}
+
+.footer .left{
+  position: relative;
+  left:200px;
+}
+
+footer .right{
+  position: relative;
+  left:750px
+}
+
+footer{
+  height: 230px;
+}
+
+footer .container{
+  position: relative;
+  bottom:80px
+}
+
+footer #sec{
+  width: 150px;
+  position: relative;
+  left: -230px;
+  top: 30px; 
+}
+
+footer #sec_ag{
+  width: 150px;
+  position: relative;
+  left: 290px;
+  top: 30px; 
+}
+.card.is-shady {
+  margin: 10px;
+}
+
+.navbar-end{
+  gap: 15px;
+}
+
+.navbar i {
+  color: #fff;
+  border: 1px solid;
+  border-radius: 100%;
+  padding: 25%;
+  
+} 
+
+.navbar img{
+  transform: scale(2);
+}
+
+.navbar .navbar-content {
+  padding-left: 10px;
+}
+
+.navbar .navbar-content p{
+  color:#fff;
+}
+
+.navbar .navbar-content p span{
+  font-size: 15px;
+}
+
+.navbar i:hover{
+  background-color: #07D48F;
+}
+
+a.navbar-item:hover{
+  background-color: #006A42;
+} 
+.navbar-item.is-active:hover{
+  background-color: #006A42;
+}
+
+.navbar-item-wide {
+  width: 200px; /* Változtasd meg a szélességet igény szerint */
+}
+.has-new-notifications{
+  display: flex;
+ 
+}
+.fa-envelope .fa-exclamation{
+  border: none;
+  position: absolute;
+  top: -14px;
+  right: -9px;
+}
+.delete-notification{
+  cursor: pointer;
+  position: relative;
+  top: -70px;
+  left: 35px;
+  size: 17px;
+  font-weight: 700;
+}
+
+
+.navbar-end .fa-envelope{
+  transform: scale(1.5);
+}
+
+.navbar-end .fa-home{
+  transform: scale(2);
+  padding: 15%;
+}
+
+.navbar-end .fa-bell{
+  transform: scale(1.4);
+}
+
+footer i{
+  color: #fff;
+  margin: 0 20px 20px 0;
+}
+
+footer i:hover{
+  color: grey;
+}
+
+footer strong{
+  color:#485fc7;
+  cursor: pointer;
+}
+
+
+/* BASE CSS END */
+#calendar   {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+    position: relative;
+    z-index: 20;
+}
+
+.wrapper{
+  width: 450px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+.wrapper .calhead{
+  display: flex;
+  align-items: center;
+  padding: 25px 30px 10px;
+  justify-content: space-between;
+}
+.calhead .icons{
+  display: flex;
+}
+.calhead .icons i{
+  height: 38px;
+  width: 38px;
+  margin: 0 1px;
+  cursor: pointer;
+  color: #878787;
+  text-align: center;
+  line-height: 38px;
+  font-size: 1.9rem;
+  user-select: none;
+  border-radius: 50%;
+}
+.icons i:last-child{
+  margin-right: -10px;
+}
+.calhead .icons i:hover{
+  background: #f2f2f2;
+  
+}
+.calhead .current-date{
+  font-size: 1.45rem;
+  font-weight: 500;
+}
+.calendar{
+  padding: 20px;
+}
+.calendar ul{
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  text-align: center;
+}
+.calendar .days{
+  margin-bottom: 20px;
+}
+.calendar li{
+  color: #333;
+  width: calc(100% / 7);
+  font-size: 1.07rem;
+}
+.calendar .weeks li{
+  font-weight: 500;
+  cursor: default;
+}
+.calendar .days li{
+  z-index: 1;
+  cursor: pointer;
+  position: relative;
+  margin-top: 30px;
+}
+.days li.inactive{
+  color: #aaa;
+}
+.days li.active{
+  color: #fff;
+}
+.days li::before{
+  position: absolute;
+  content: "";
+  left: 50%;
+  top: 50%;
+  height: 40px;
+  width: 40px;
+  z-index: -1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.days li.active::before{
+  background: #48C78E   ;
+}
+
+.special-day::before {
+  background-color: red; 
+  font-weight: bold; 
+}
+#eventDetails{
+  color:black; 
+  width: 400px;
+  display: none;
+}
+main .box{
+  width: 200px;
+  position: relative;
+  bottom: 250px;
+  left: 25%;
+}
+
+#icon{
+  height: 27px;
+  transform: scale(1.4);
+  margin-left: 5px;
+  position: relative;
+  top: 17px;
+}
+.user-info{
+  height: 50px;
+  width: 90px;
+}
+#profile-image{ 
+  position: relative;
+  top: 34%;
+  left: 48%;
+  border: 1px solid #fff;
+  border-radius: 100px;
+  width: 24px;
+  padding: 0 2px 0 2px;
+  
+}
+#loggedin-username{
+  height: 50px;
+  position: relative;
+  font-weight: 600;
+  bottom: 25%;
+  left: 90%;
+  color: #fff;
+  font-size: 12px;
+  z-index: 20;
+}   

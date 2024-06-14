@@ -1,0 +1,168 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+}
+body{
+  background: #006A42;
+  overflow: hidden;
+}
+::selection{
+  background: rgba(26,188,156,0.3);
+}
+.container{
+  max-width: 440px;
+  padding: 0 20px;
+  margin: 170px auto;
+}
+.wrapper{
+  width: 100%;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 4px 10px 1px rgba(0,0,0,0.1);
+}
+.wrapper .title{
+  height: 90px;
+  background: #4c956c;
+  border-radius: 5px 5px 0 0;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper form{
+  padding: 30px 25px 25px 25px;
+}
+.wrapper form .row{
+  height: 45px;
+  margin-bottom: 15px;
+  position: relative;
+}
+.wrapper form .row input{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding-left: 60px;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+form .row input:focus{
+  border-color: #4c956c;
+  box-shadow: inset 0px 0px 2px 2px rgba(26,188,156,0.25);
+}
+form .row input::placeholder{
+  color: #999;
+}
+.wrapper form .row i{
+  position: absolute;
+  width: 47px;
+  height: 100%;
+  color: #fff;
+  font-size: 18px;
+  background: #4c956c;
+  border: 1px solid #4c956c;
+  border-radius: 5px 0 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper form .pass{
+  margin: 8px 0 20px 97px;
+}
+.wrapper form .pass a{
+  color: #4c956c;
+  font-size: 17px;
+  text-decoration: none;
+}
+.wrapper form .pass a:hover{
+  text-decoration: underline;
+}
+.wrapper form .button input{
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  padding-left: 0px;
+  background: #4c956c;
+  border: 1px solid #4c956c;
+  cursor: pointer;
+}
+form .button input:hover{
+  background: #12876f;
+}
+.wrapper form .signup-link{
+  text-align: center;
+  margin-top: 20px;
+  font-size: 17px;
+}
+.wrapper form .signup-link a{
+  color: #4c956c;
+  text-decoration: none;
+}
+form .signup-link a:hover{
+  text-decoration: underline;
+}
+  
+#togglePassword span{
+    margin-left: 20px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+#togglePassword{
+    width: 200px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 20%;
+}
+
+.pass{
+    margin-left: 20px;
+}
+
+#reg{
+  position: relative;
+  bottom:70px;
+}
+
+#forgpass .title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+}
+
+#forgpass form .pass p {
+  color: #4c956c;
+  font-size: 17px;
+  text-decoration: none;
+  width: 290px;
+  position: relative;
+  right: 25%;
+}
+
+
+#forgpass .row input::placeholder{
+  padding-left: 15%;
+}
+
+#passwordError {
+  color: red;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+#error-message {
+  display: none;
+  color: #ffffff; /* Text color for the error message */
+  background-color: #cd1c2b; /* Background color for the error message */
+  padding: 10px; /* Padding for the error message */
+  text-align: center;
+}

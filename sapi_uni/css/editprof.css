@@ -1,0 +1,352 @@
+.bg_img img{
+    margin-top: -700px;
+}
+.row {
+    position: absolute;
+    z-index: 10;
+    top: 150%;
+}
+
+.footer img{
+    width: 250px;
+}
+
+.footer .left{
+    position: relative;
+    left:200px;
+}
+
+footer .right{
+    position: relative;
+    left:750px
+}
+
+footer{
+    height: 230px;
+}
+
+footer .container{
+    position: relative;
+    bottom:80px
+}
+
+footer #sec{
+    width: 150px;
+    position: relative;
+    left: -230px;
+    top: 30px; 
+}
+
+footer #sec_ag{
+    width: 150px;
+    position: relative;
+    left: 290px;
+    top: 30px; 
+}
+.card.is-shady {
+    margin: 10px;
+}
+
+.navbar-end{
+    gap: 15px;
+}
+
+.navbar i {
+    color: #fff;
+    border: 1px solid;
+    border-radius: 100%;
+    padding: 25%;
+    
+} 
+
+.navbar img{
+    transform: scale(2);
+}
+
+.navbar .navbar-content {
+    padding-left: 10px;
+}
+
+.navbar .navbar-content p{
+    color:#fff;
+}
+
+.navbar .navbar-content p span{
+    font-size: 15px;
+}
+
+.navbar i:hover{
+    background-color: #07D48F;
+}
+
+a.navbar-item:hover{
+    background-color: #006A42;
+} 
+.navbar-item.is-active:hover{
+    background-color: #006A42;
+}
+
+
+
+.navbar-end .fa-envelope{
+    transform: scale(1.5);
+}
+
+.navbar-end .fa-home{
+    transform: scale(2);
+    padding: 15%;
+}
+.navbar-item-wide {
+    width: 200px; /* Változtasd meg a szélességet igény szerint */
+}
+.has-new-notifications{
+    display: flex;
+   
+}
+.fa-envelope .fa-exclamation{
+    border: none;
+    position: absolute;
+    top: -14px;
+    right: -9px;
+}
+.delete-notification{
+    cursor: pointer;
+    position: relative;
+    top: -70px;
+    left: 35px;
+    size: 17px;
+    font-weight: 700;
+}
+
+
+.navbar-end .fa-bell{
+    transform: scale(1.4);
+}
+
+footer i{
+    color: #fff;
+    margin: 0 20px 20px 0;
+}
+
+footer i:hover{
+    color: grey;
+}
+
+footer strong{
+    color:#485fc7;
+    cursor: pointer;
+}
+
+.user-info{
+    height: 50px;
+    width: 90px;
+}
+#profile-image{ 
+    position: relative;
+    top: 34%;
+    left: 48%;
+    border: 1px solid #fff;
+    border-radius: 100px;
+    width: 24px;
+    height: 24px;
+    padding: 0 2px 0 2px;
+    
+}
+#loggedin-username{
+    height: 50px;
+    position: relative;
+    bottom: 25%;
+    font-weight: 600;
+    left: 90%;
+    color: #fff;
+    font-size: 12px;
+    z-index: 20;
+}   
+#icon{
+    height: 27px;
+    transform: scale(1.4);
+    margin-left: 5px;
+    position: relative;
+    top: 17px;
+  }
+  .user-info{
+    height: 50px;
+    width: 90px;
+  }
+  #profile-image{ 
+    position: relative;
+    top: 34%;
+    left: 48%;
+    border: 1px solid #fff;
+    border-radius: 100px;
+    width: 24px;
+    padding: 0 2px 0 2px;
+    
+  }
+  #loggedin-username{
+    height: 50px;
+    font-weight: 600;
+    position: relative;
+    bottom: 25%;
+    left: 90%;
+    color: #fff;
+    font-size: 12px;
+    z-index: 20;
+  }
+
+/* BASE CSS END---------------------------------------------- */
+#edit{
+    margin-top: 50px;
+}
+
+.gap{
+    margin-bottom: 5px;    
+}
+#third {
+    width: 50%;
+    height: 140;
+    margin: 0 auto;
+    
+}
+#third .name{
+    display: flex;
+    position: relative;
+    left: 50px;
+    toP: 40%;
+}
+#third .name input{
+    width:400px;
+    position: relative;
+    left: 20px;
+    bottom:5px;
+}
+
+
+#sec2{    
+    width: 50%;
+    height: 230px;
+    margin: 0 auto;
+    display: flex;
+}
+
+#sec2 p{
+    padding:20px;
+}
+
+#uploadButton{
+    top: 45%;
+    left: 10%;
+}
+
+#sec2 i{
+    position: relative;
+    right: 5px;
+}
+
+
+#first{
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    gap: 10px
+}
+
+#editProfileButton{
+    top: 40px;
+    left: 240px;
+}
+.error{
+    position: relative;
+    top: 40px;
+    color: red;
+    right: 260px;
+}
+
+#emailError{
+    position: relative;
+    top: 45px;
+}
+
+#fourth{
+    display: flex;
+    width: 50%;
+    margin: 0 auto;
+    gap: 10px
+}
+
+#fifth{
+    width: 50%;
+    margin: 0 auto;
+    height: 230px;
+}
+
+#fifth p{
+    position: relative;
+    top: 5px;
+}
+
+#fifth input{
+    width: 400px;
+}
+
+#fifth .currentpass{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+#fifth .newpass{
+    display: flex;
+    gap: 30px;
+    position: relative;
+    top:20px;
+}
+
+#fifth .button{
+    position: relative;
+    top: 60px;
+    left: 220px;
+}
+
+#avatarUploadSection {
+    position: relative;
+}
+
+.avatar-edit {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 0.375rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.avatar-edit input {
+    display: none;
+}
+
+.file-icon {
+    color: #fff;
+}
+
+.file-icon i {
+    margin-left: 15px; 
+}
+#placeholderImage{
+    width: 192px;
+    height: 192px;
+    position: relative;
+    border-radius: 100%;
+    border: 6px solid #F8F8F8;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+    background-image: url(../img/usericon.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}

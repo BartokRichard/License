@@ -1,0 +1,142 @@
+
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Profile</title>
+    <link rel="icon" type="image/png" href="img/favicon.ico">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel='stylesheet' href='css/profile.css'>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script/generals.js" ></script>
+    <script src="script/loadProfilePage.js" defer></script>
+    <script src="script/notifications.js" defer></script>
+</head>
+<body style='background-color: #4c956c;'>
+    <header>
+        <!-- NAVBAR START ----------------------------------------------------------------------------------------------------------------------->
+        <nav class ='navbar py-2' style='background-color: #006A42;'>
+            <div class='container'>
+                <div class ='navbar-brand'>
+                    <a class='navbar-item' href='https://csik.sapientia.ro' target='_blank' >   
+                        <img src='img/sapi_logo.jpg' alt='Logo'>
+                    </a>
+                </div>
+                <div class='navbar-content'>
+                    <p class='title is-4'>
+                        Sapientia
+                        <span><br> Erdélyi Magyar
+                        <br> Tudományegyetem</span>
+                    </p>
+                </div>
+
+                <div class='navbar-menu' id='nav-links'>
+                    <div class='navbar-end '>
+                        <a class='navbar-item is-active' href='all_courses.html'><i class='fa fa-home'></i></a>
+                        <a class='navbar-item '><i class='fa fa-envelope ' href='#email'></i></a>
+                        <div class='navbar-item has-dropdown is-hoverable'>
+                            <i class='fa fa-cog' id="icon"></i> 
+                            <div class='navbar-dropdown'>
+                                <a class='navbar-item' href="profile.html">Profil</a>
+                                <a class='navbar-item' href='calendar.html'>Naptár</a>
+                                <a class='navbar-item' id="logout">Kijelentkezés</a>
+                            </div>
+                        </div>
+                        <div class="user-info">
+                            <img class="profile-image" id="profile-image" src="img/usericon.png" alt="Profile Image">
+                            <div id="loggedin-username">
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- NAVBAR END -------------------------------------------------------------------------------------------------------------------------->
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="section">
+                <div class="level-left">
+                    <div class="box" style="background-color: #FCFCFC">
+                        <div class='media' style="max-height: 100%; display:felx; justify-content: center;">
+                            <figure class='image pb-2'>
+                                <img class="profile-image" src='img/usericon.png' alt='Image'>
+                            </figure>
+                        </div>
+                        <div class="user-data">
+                            <div class="text has-text-centered">
+                                <p class="title pb-2 user_name">UserName</p>
+                                <p class="title user_email">xPy@uni.sapinetia.ro</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="level-item has-text-centered pl-5">
+                        <table class="table is-bordered">
+                            <tbody>
+                                <tr>
+                                    <td><strong> Teljes Név </strong><br> <span class="user_name">Jhon Doe</span></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><strong>Email </strong><br> <span class="user_email">xPy@uni.sapinetia.ro</span></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><strong>Jelszó</strong> <br> <span>**********</span></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><strong>Megszerzett Mérföldkövek</strong><br><span> </span></td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="level-item has-text-centered">
+                <div class="buttons">
+                    <a href="editprofile.html" class="button is-primary">Edit Profile</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg_img">
+            <img src="img/bg.png" alt="icon">
+        </div>
+    </main>
+<!-- FOOTER START ------------------------------------------------------------------------------------------------------------------------------->
+        <footer class='footer' style='background-color: #006A42'>
+            <img src="img/footer_left.png" alt="" class="left">
+            <img src="img/footer_left.png" alt="" class="left" id="sec">
+            <img src="img/footer_right.png" alt="" class="right">
+            <img src="img/footer_right.png" alt="" class="right" id="sec_ag">
+            <div class='container'>
+              <div class='content has-text-centered'>
+                <div class='soc'>
+                  <a href='#'><i class='fa fa-github-alt fa-lg'></i></a>
+                  <a href='#'><i class='fa fa-youtube fa-lg'></i></a>
+                  <a href='#'><i class='fa fa-facebook fa-lg'></i></a>
+                  <a href='#'><i class='fa fa-twitter fa-lg'></i></a>
+                </div>
+            </div>
+        </footer>
+<!-- FOOTER END------------------------------------------------------------------------------------------------------------------------------>
+    </main>
+    <script>
+        $(document).ready(function () {
+            APICall({
+                type: "POST",
+                url: "login",
+                data: {},
+                success: function (response) {
+                    setWelcomeMessage();
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        }); 
+    </script>
+</body>
+</html>

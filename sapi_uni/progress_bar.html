@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Progress_bar</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.savanContainer {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+}
+
+.savan {
+    height: 30px;
+    background-color: #3498db;
+    border-radius: 10px;
+    transition: width 0.3s ease-in-out;
+}
+
+.percentage {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input[type="number"] {
+    margin-top: 20px;
+    padding: 5px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="savanContainer">
+        <div class="savan" id="savan" style="width: 0;"></div>
+        <div class="percentage" id="percentage">0%</div>
+    </div>
+    <input type="number" id="number" min="1" max="5" step="1" onchange="frissitSav();">
+</body>
+<script>
+    function frissitSav() {
+            const number = $("#number").val();
+            const savan = $("#savan");
+            const percentage = $("#percentage");
+
+            const maxnumber = 5;
+            const percentageErtek = (number / maxnumber) * 100;
+
+            savan.css("width", percentageErtek + "%");
+            percentage.text(percentageErtek.toFixed(0) + "%");
+        }
+
+        frissitSav();
+
+        $("#number").on("input", frissitSav);
+
+frissitSav(); // Az oldal betöltésekor is frissítjük a sávot az alapértelmezett értékkel
+
+</script>
+</html>
+yz

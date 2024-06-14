@@ -1,0 +1,8 @@
+AddDefaultCharset utf-8
+php_value date.timezone Europe/Bucharest
+
+RewriteEngine On
+
+#RewriteRule ^(api|test|data)($|/) - [L]
+
+RewriteRule ^(.+)$ index.php?q=$1 [L,QSA]
